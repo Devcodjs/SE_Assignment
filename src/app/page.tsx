@@ -7,9 +7,9 @@ export default function HomePage() {
   return (
     <section>
       <About />
-      <FAQ />
-      <Prizes />
       <Timeline />
+      <Prizes />
+      <FAQ />
     </section>
   );
 }
