@@ -56,9 +56,8 @@ const FAQ: React.FC = () => {
   );
 
   return (
-    <section id="faq" className="py-16 bg-gray-50">
+    <section id="faq" className="py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">
             Frequently Asked Questions
@@ -68,7 +67,6 @@ const FAQ: React.FC = () => {
           </p>
         </div>
 
-        {/* FAQ List */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 divide-y divide-gray-200">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -87,7 +85,6 @@ const FAQ: React.FC = () => {
                   </span>
                 </button>
 
-                {/* Answer */}
                 <div
                   className={`overflow-hidden transition-all duration-600 ease-in-out ${
                     isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"

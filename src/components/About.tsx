@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { registerationGFormLink } from "~/constants/constants";
 
 export default function AboutPage() {
   const router = useRouter();
@@ -34,15 +35,16 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Animated Background Elements */}
+    <div
+      id="about"
+      className="pt-8 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
+    >
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 h-72 w-72 animate-pulse rounded-full bg-blue-200 opacity-20 mix-blend-multiply blur-3xl filter"></div>
         <div className="absolute top-40 right-10 h-72 w-72 animate-pulse rounded-full bg-orange-200 opacity-20 mix-blend-multiply blur-3xl filter"></div>
         <div className="absolute bottom-20 left-1/2 h-72 w-72 animate-pulse rounded-full bg-purple-200 opacity-20 mix-blend-multiply blur-3xl filter"></div>
       </div>
 
-      {/* Hero Section*/}
       <div className="relative overflow-hidden bg-gradient-to-br from-white via-sky-50 to-blue-100">
         <div className="absolute inset-0">
           <div className="animate-pan-bg absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAxMmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAxMiIHN0cm9rZT0iI2UwZTdmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuNCIvPjwvZz48L3N2Zz4=')] bg-repeat opacity-50"></div>
@@ -60,7 +62,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Tab Navigation */}
       <div className="relative z-10 mx-auto -mt-8 max-w-7xl px-8">
         <div className="flex gap-2 rounded-2xl bg-white p-2 shadow-2xl">
           <button
@@ -85,50 +86,38 @@ export default function AboutPage() {
           </button>
         </div>
       </div>
-
-      {/* Content Sections */}
       <div className="relative mx-auto max-w-7xl px-8 py-16">
-        {/* Hackathon Tab Content */}
         {activeTab === "hackathon" && (
           <div className="animate-fade-in space-y-20">
-            {/* What is Aavartan 2026 */}
             <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/80 shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)] backdrop-blur-xl">
-              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-blue-500/5"></div>
 
               <div
                 className="relative grid grid-cols-2 gap-0"
                 style={{ minHeight: "550px" }}
               >
-                {/* Image Section */}
                 <div className="relative h-full overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center p-10 pl-14">
                     <div className="group relative">
-                      {/* Glow effect */}
                       <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-orange-600 to-blue-600 opacity-25 blur-lg transition duration-500 group-hover:opacity-40"></div>
 
-                      {/* MODIFIED: narrower and smaller box with centered alignment, reduced hover translate */}
                       <div className="relative mx-auto max-h-[300px] w-full max-w-[550px] overflow-hidden rounded-2xl shadow-[0_15px_60px_-10px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_20px_70px_-10px_rgba(0,0,0,0.4)]">
                         <img
                           src="https://images.unsplash.com/photo-1610461853808-0c0bf780a7c6?q=80&w=1193&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /* <-- The one, correct link */
                           alt="Hackathon"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        {/* Image overlay gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-orange-900/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Content Section */}
                 <div className="relative h-full">
                   <div className="absolute inset-0 flex items-center justify-center p-10 pr-14">
                     <div className="group relative">
-                      {/* Animated border glow */}
                       <div className="absolute -inset-1 animate-pulse rounded-2xl bg-gradient-to-br from-gray-900 via-blue-900 to-black opacity-20 blur transition duration-500 group-hover:opacity-30"></div>
 
-                      {/* MODIFIED: smaller width and limited hover translate */}
                       <div className="relative mx-auto flex max-h-[550px] w-full max-w-[600px] flex-col justify-center space-y-6 rounded-2xl border border-gray-100/50 bg-white/90 px-14 py-12 shadow-[0_15px_60px_-10px_rgba(0,0,0,0.3)] backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.4)]">
                         <div className="space-y-4">
                           <div className="flex items-center gap-2">
@@ -172,7 +161,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Objectives Section */}
             <div>
               <div className="mb-12 space-y-4 text-center">
                 <p className="text-sm font-bold tracking-wide text-orange-600 uppercase">
@@ -211,47 +199,37 @@ export default function AboutPage() {
           </div>
         )}
 
-        {/* NIT Silchar Tab Content */}
         {activeTab === "nit" && (
           <div className="animate-fade-in space-y-20">
-            {/* Institute Overview */}
             <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/80 shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)] backdrop-blur-xl">
-              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-orange-500/5"></div>
 
               <div
                 className="relative grid grid-cols-2 gap-0"
                 style={{ minHeight: "550px" }}
               >
-                {/* Image Section */}
                 <div className="relative h-full overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center p-10 pl-14">
                     <div className="group relative">
-                      {/* Glow effect */}
                       <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-600 to-orange-600 opacity-25 blur-lg transition duration-500 group-hover:opacity-40"></div>
 
-                      {/* MODIFIED: smaller max width and height with hover translates */}
                       <div className="relative mx-auto max-h-[550px] w-full max-w-[600px] overflow-hidden rounded-2xl shadow-[0_15px_60px_-10px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_20px_70px_-10px_rgba(0,0,0,0.4)]">
                         <img
                           src="https://technovation.nits.ac.in/_app/immutable/assets/nits-1.jw_vNGav.jpg"
                           alt="NIT Silchar Campus"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        {/* Image overlay gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Content Section */}
                 <div className="relative h-full">
                   <div className="absolute inset-0 flex items-center justify-center p-10 pr-14">
                     <div className="group relative">
-                      {/* Animated border glow */}
                       <div className="absolute -inset-1 animate-pulse rounded-2xl bg-gradient-to-br bg-gradient-to-r from-gray-900 via-blue-900 to-black opacity-20 blur transition duration-500 group-hover:opacity-30"></div>
 
-                      {/* MODIFIED: smaller max width and height with hover translate */}
                       <div className="relative mx-auto flex max-h-[500px] w-full max-w-[600px] flex-col justify-center space-y-6 rounded-2xl border border-gray-100/50 bg-white/90 px-14 py-12 shadow-[0_15px_60px_-10px_rgba(0,0,0,0.3)] backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.4)]">
                         <div className="space-y-4">
                           <div className="flex items-center gap-2">
@@ -322,10 +300,8 @@ export default function AboutPage() {
           </div>
         )}
 
-        {/* Enhanced Why Participate Section */}
         <div className="mx-auto max-w-7xl px-8 py-20">
           <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-16 text-white shadow-[0_30px_100px_-20px_rgba(0,0,0,0.4)]">
-            {/* Animated background pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ=Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAxMmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')]"></div>
             </div>
@@ -340,8 +316,8 @@ export default function AboutPage() {
                       desc: "From online screening to the final offline hackathon at NIT Silchar",
                     },
                     {
-                      title: "Exciting Prizes Worth ₹1,60,000", // Corrected total from PDF
-                      desc: "Cash prizes for winners and certificates for all registered participants", // Corrected description
+                      title: "Exciting Prizes Worth ₹1,60,000", 
+                      desc: "Cash prizes for winners and certificates for all registered participants", 
                     },
                     {
                       title: "Free Accommodation & Local Tours",
