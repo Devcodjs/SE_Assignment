@@ -20,7 +20,6 @@ export default function Prizes() {
 
   const handleCertificateAccess = () => {
     if (teamCode.trim()) {
-      // Simulate verification - in real app, this would validate against backend
       setIsParticipant(true);
       setShowCertificateModal(false);
       alert("Certificate verified! You can now download your certificates.");
@@ -51,7 +50,6 @@ export default function Prizes() {
           </p>
         </div>
 
-        {/* Top 3 Prizes */}
         <div className="mb-16 grid gap-8 md:grid-cols-3">
           {mainPrizes.map((prize, index) => {
             const Icon = prize.icon;
@@ -130,7 +128,6 @@ export default function Prizes() {
           })}
         </div>
 
-        {/* Special Category Prizes */}
         <div className="mb-24">
           <div className="mb-12 text-center">
             <h2 className="mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
@@ -150,7 +147,6 @@ export default function Prizes() {
                   className={`group relative overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}
                 >
                   <div className="mb-6 flex justify-center">
-                    {/* --- 4. FIXED: Hardcoded 'bg-green-500' is replaced with 'prize.gradient' --- */}
                     <div
                       className={`rounded-2xl bg-gradient-to-br ${prize.gradient} p-4 shadow-lg`}
                     >
@@ -174,13 +170,10 @@ export default function Prizes() {
             })}
           </div>
         </div>
-        {/* --- END OF MODIFIED SECTION --- */}
 
-        {/* Professional Certificate Section - Clean Bright Theme */}
         <div className="mb-24">
           <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-xl md:p-12">
             <div className="relative">
-              {/* Header - Simple and Clean */}
               <div className="mb-12 text-center">
                 <div className="mb-6 flex items-center justify-center gap-4">
                   <div className="rounded-xl bg-indigo-600 p-4 shadow-lg">
@@ -200,9 +193,7 @@ export default function Prizes() {
                 </p>
               </div>
 
-              {/* Certificate types - Clean Cards */}
               <div className="mb-12 grid gap-6 md:grid-cols-3">
-                {/* Participation Certificate */}
                 <div className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:border-indigo-300 hover:shadow-lg">
                   <div className="mb-4 inline-flex rounded-xl bg-indigo-600 p-3 shadow-md">
                     <Award className="h-10 w-10 text-white" />
@@ -215,7 +206,6 @@ export default function Prizes() {
                   </p>
                 </div>
 
-                {/* Merit Certificate */}
                 <div className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:border-indigo-300 hover:shadow-lg">
                   <div className="mb-4 inline-flex rounded-xl bg-indigo-600 p-3 shadow-md">
                     <Star className="h-10 w-10 text-white" />
@@ -228,7 +218,6 @@ export default function Prizes() {
                   </p>
                 </div>
 
-                {/* Excellence Certificate */}
                 <div className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:border-indigo-300 hover:shadow-lg">
                   <div className="mb-4 inline-flex rounded-xl bg-indigo-600 p-3 shadow-md">
                     <Sparkles className="h-10 w-10 text-white" />
@@ -242,7 +231,6 @@ export default function Prizes() {
                 </div>
               </div>
 
-              {/* Certificate Access Section */}
               <div className="relative rounded-2xl border border-slate-200 bg-slate-50 p-8 md:p-10">
                 <div className="mb-8 text-center">
                   <div className="mb-4 inline-flex rounded-xl bg-slate-100 p-4">
@@ -317,7 +305,6 @@ export default function Prizes() {
           </div>
         </div>
 
-        {/* Certificate Modal */}
         {showCertificateModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
             <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl">
@@ -365,7 +352,6 @@ export default function Prizes() {
           </div>
         )}
 
-        {/* Additional Perks */}
         <div className="mb-24">
           <div className="mb-12 text-center">
             <h2 className="mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl">

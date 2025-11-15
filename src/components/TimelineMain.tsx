@@ -217,11 +217,9 @@ const HackathonTimeline: React.FC = () => {
                         </button>
                         <StatusBadge status={status} eventId={event.id} />
                       </div>
-                      {/*problemStatementpopup*/}
                       {isProblemStatementPopupOpen && (
                         <div className="fixed inset-0 z-500 flex items-center justify-center bg-black/10 p-4 backdrop-blur-sm">
                           <div className="max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl">
-                            {/* Header */}
                             <div className="flex items-center justify-between bg-gradient-to-r from-blue-700 to-blue-500 p-6 text-white">
                               <h2 className="text-2xl font-bold">
                                 Problem Statements
@@ -236,10 +234,8 @@ const HackathonTimeline: React.FC = () => {
                               </button>
                             </div>
 
-                            {/* Content */}
                             <div className="max-h-[calc(90vh-160px)] overflow-y-auto p-6">
                               {!areProblemStatementsLive ? (
-                                // Before target date - Show countdown/waiting message
                                 <div className="py-12 text-center">
                                   <div className="mb-4 inline-block rounded-full bg-yellow-100 p-4">
                                     <Clock
@@ -264,7 +260,6 @@ const HackathonTimeline: React.FC = () => {
                                   </div>
                                 </div>
                               ) : (
-                                // After target date - Show problem statements
                                 <div>
                                   <div className="mb-6 flex items-center gap-2 text-blue-700">
                                     <FileText size={24} />
@@ -299,7 +294,6 @@ const HackathonTimeline: React.FC = () => {
                               )}
                             </div>
 
-                            {/* Footer */}
                             <div className="border-t border-gray-200 bg-gray-50 px-6 py-4 ">
                               <button
                                 onClick={() =>
