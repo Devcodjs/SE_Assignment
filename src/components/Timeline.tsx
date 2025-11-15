@@ -207,7 +207,7 @@ export default function TimelineDemo() {
       icon: "📝",
       content: (
         <p>
-          Final day for all participating teams to register for Hackathon 2026.
+          Final day for all participating teams to register for Aavartan 2026.
           Registration fee is <span className="font-bold text-purple-600">₹2,000</span> per team. 
           Early bird registrations get exclusive mentorship sessions!
         </p>
@@ -289,7 +289,7 @@ export default function TimelineDemo() {
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold mb-4 shadow-lg">
-            HACKATHON 2026
+            AAVARTAN 2026
           </div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
             Event Timeline

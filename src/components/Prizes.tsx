@@ -308,7 +308,7 @@ export default function Prizes() {
           </h1>
           <p className="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600">
             Celebrating excellence, innovation, and problem-solving skills at
-            Hackathon 2026
+            Aavartan 2026
           </p>
         </div>
 
@@ -600,7 +600,7 @@ export default function Prizes() {
                   type="text"
                   value={teamCode}
                   onChange={(e) => setTeamCode(e.target.value)}
-                  placeholder="e.g., HACK2026-T001"
+                  placeholder="e.g., AAVARTAN-T001"
                   className="w-full rounded-xl border-2 border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
                 />
                 <p className="mt-2 text-xs text-slate-500">

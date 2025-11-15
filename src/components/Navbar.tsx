@@ -49,12 +49,14 @@ export default function Navbar() {
             <div className="relative w-10 h-10 flex-shrink-0">
               <div className="absolute inset-0 bg-orange-500 rounded-lg blur opacity-30 group-hover:opacity-50 transition"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-xl">H</span>
+                {/* Changed 'H' to 'A' for Aavartan */}
+                <span className="text-white font-bold text-xl">A</span>
               </div>
             </div>
             <div>
               <h1 className="text-lg font-bold leading-tight">
-                <span className="text-orange-600">Hackathon 2026, </span>
+                {/* Changed 'Hackathon 2026' to 'Aavartan 2026' */}
+                <span className="text-orange-600">Aavartan 2026, </span>
                 <span className="text-slate-900">NIT Silchar</span>
               </h1>
             </div>
