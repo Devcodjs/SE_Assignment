@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useQuestion } from "~/hooks/QuestionContext";
-import MCQQuestion from "~/components/questions/MCQQuestion";
-import IntegerQuestion from "~/components/questions/IntegerQuestion";
-import CodingQuestion from "~/components/questions/CodingQuestion";
-import type { Question } from "~/types/Question";
+import { useQuestion } from "../../hooks/QuestionContext"; // Fixed path
+import MCQQuestion from "../../components/questions/MCQQuestion"; // Fixed path
+import IntegerQuestion from "../../components/questions/IntegerQuestion"; // Fixed path
+import CodingQuestion from "../../components/questions/CodingQuestion"; // Fixed path
+import type { Question } from "../../types/Question"; // Fixed path
+import { useRouter } from "next/navigation"; // Import useRouter
 
+// This is the local question array from your previous file
 const questions: Question[] = [
   {
     id: 1,
@@ -29,16 +31,32 @@ const questions: Question[] = [
 ];
 
 export default function QuizPage() {
-  const { currentQuestionIndex, setCurrentQuestionIndex, setTotalQuestions } =
-    useQuestion();
+  // 1. Get `startTest` from the context
+  const { 
+    currentQuestionIndex, 
+    setCurrentQuestionIndex, 
+    setTotalQuestions,
+    startTest // <-- Get the function
+    // Removed `router` from context
+  } = useQuestion();
+  
+  const router = useRouter(); // Use the hook directly
+  
   const [selectedAnswer, setSelectedAnswer] = useState<number | string | null>(
     null,
   );
   const [integerAnswer, setIntegerAnswer] = useState("");
 
+  // 2. THIS IS THE FIX
+  // When this page mounts, it means the test has *really* started.
+  // We must tell the context, so the proctoring can begin.
   useEffect(() => {
-    setTotalQuestions(questions.length);
-  }, [setTotalQuestions]);
+    startTest(() => {
+      // This callback now just sets the total.
+      // We are already on the correct page.
+      setTotalQuestions(questions.length);
+    });
+  }, [startTest, setTotalQuestions]); // Run only once on mount
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -79,7 +97,7 @@ export default function QuizPage() {
       {currentQuestion?.type === "coding" && (
         <CodingQuestion
           question={currentQuestion.question}
-          questionNumber={currentQuestionIndex + 1}
+          questionNumber={currentQuestionIndex + 1} // Assuming 1-based index for display
           totalQuestions={questions.length}
         />
       )}
