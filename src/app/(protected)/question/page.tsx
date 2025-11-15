@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useQuestion } from "../../hooks/QuestionContext"; // Fixed path
-import MCQQuestion from "../../components/questions/MCQQuestion"; // Fixed path
-import IntegerQuestion from "../../components/questions/IntegerQuestion"; // Fixed path
-import CodingQuestion from "../../components/questions/CodingQuestion"; // Fixed path
-import type { Question } from "../../types/Question"; // Fixed path
+import { useQuestion } from "~/hooks/QuestionContext"; // Fixed path
+import MCQQuestion from "~/components/questions/MCQQuestion"; // Fixed path
+import IntegerQuestion from "~/components/questions/IntegerQuestion"; // Fixed path
+import CodingQuestion from "~/components/questions/CodingQuestion"; // Fixed path
+import type { Question } from "~/types/Question"; // Fixed path
 import { useRouter } from "next/navigation"; // Import useRouter
 
 // This is the local question array from your previous file

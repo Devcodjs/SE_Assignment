@@ -1,10 +1,12 @@
 import { Timer } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useQuestion } from "~/hooks/QuestionContext";
 
 const Navbar = () => {
   const { currentQuestionIndex, totalQuestions, setCurrentQuestionIndex } =
     useQuestion();
+    const router = useRouter();
 
   const [timeRemaining, setTimeRemaining] = useState(3600);
 
@@ -35,6 +37,7 @@ const Navbar = () => {
     if (confirm("Are you sure you want to submit the quiz?")) {
       alert("Quiz submitted!");
     }
+    router.push("/submission");
   };
 
   const handleNext = () => {
