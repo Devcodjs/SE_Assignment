@@ -58,7 +58,7 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="mx-auto max-w-5xl text-xl text-slate-600 drop-shadow-sm md:text-2xl">
-            Discover Hackathon 2026, proudly hosted by an institution at the
+            Discover Aavartan 2026, proudly hosted by an institution at the
             forefront of technological innovation and academic excellence.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 : "text-gray-600 hover:bg-gray-100"
             }`}
           >
-            🚀 About Hackathon 2026
+            🚀 About Aavartan 2026
           </button>
           <button
             onClick={() => setActiveTab("nit")}
@@ -95,7 +95,7 @@ export default function AboutPage() {
         {/* Hackathon Tab Content */}
         {activeTab === "hackathon" && (
           <div className="animate-fade-in space-y-20">
-            {/* What is Hackathon 2026 */}
+            {/* What is Aavartan 2026 */}
             <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/80 shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)] backdrop-blur-xl">
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-blue-500/5"></div>
@@ -143,13 +143,13 @@ export default function AboutPage() {
                           </div>
 
                           <h1 className="text-5xl leading-tight font-bold text-black">
-                            What is Hackathon 2026?
+                            What is Aavartan 2026?
                           </h1>
                         </div>
 
                         <div className="text-[15px] leading-relaxed text-black">
                           <p>
-                            Hackathon 2026 is a{" "}
+                            Aavartan 2026 is a{" "}
                             <span className="font-semibold text-black">
                               national-level coding competition
                             </span>{" "}
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   Our Mission
                 </p>
                 <h2 className="text-5xl font-bold text-gray-900">
-                  Objectives of Hackathon 2026
+                  Objectives of Aavartan 2026
                 </h2>
                 <p className="mx-auto max-w-2xl text-lg text-gray-600">
                   Creating a transformative experience that challenges
@@ -344,8 +344,8 @@ export default function AboutPage() {
                       desc: "From online screening to the final offline hackathon at NIT Silchar",
                     },
                     {
-                      title: "Exciting Prizes Worth ₹1,20,000",
-                      desc: "Cash prizes and certificates for top performers",
+                      title: "Exciting Prizes Worth ₹1,60,000", // Corrected total from PDF
+                      desc: "Cash prizes for winners and certificates for all registered participants", // Corrected description
                     },
                     {
                       title: "Free Accommodation & Local Tours",
@@ -409,7 +409,10 @@ export default function AboutPage() {
 
                     <button
                       onClick={() =>
-                        window.open(registerationGFormLink, "_blank")
+                        window.open(
+                          "https://forms.gle/PR5WMRiVVgVSjudL8",
+                          "_blank",
+                        )
                       }
                       className="group/reg relative mt-8 flex w-full transform items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 py-5 text-xl font-bold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:from-orange-600 hover:to-orange-700 hover:shadow-2xl"
                     >

@@ -4,6 +4,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
   const quickLinks = [
+    {name : "Home" , href: "#Home"},
     { name: "About", href: "#about" },
     { name: "Timeline", href: "#timeline" },
     { name: "Prizes", href: "#prizes" },
@@ -27,14 +28,14 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-200 py-12 mt-16">
+    <footer className="bg-gray-900 text-gray-200 py-12 mt-16">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">Hackathon 2026</h3>
+            <h3 className="text-xl font-bold text-white mb-4">Aavartan 2026</h3>
             <p className="text-sm text-gray-400 mb-4">
               National-Level Coding Competition organized by NIT Silchar. 
               Join us for 48 hours of innovation, collaboration, and problem-solving.
@@ -78,8 +79,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-gray-400">
                 <span className="mt-0.5 flex-shrink-0">{icons.email}</span>
-                <a href="mailto:hackathon@nits.ac.in" className="hover:text-white transition-colors">
-                  hackathon@nits.ac.in
+                <a href="mailto:aavartan@nits.ac.in" className="hover:text-white transition-colors">
+                  aavartan@nits.ac.in
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-gray-400">

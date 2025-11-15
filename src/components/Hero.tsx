@@ -13,7 +13,7 @@ function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&h=1080&fit=crop"
-          alt="Hackathon Background"
+          alt="Aavartan Background" // Changed
           className="h-full w-full object-cover opacity-10"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-orange-50/80 to-transparent"></div>
@@ -40,7 +40,7 @@ function HeroSection() {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-6xl leading-tight font-black text-gray-900 lg:text-7xl">
-                Hackathon
+                Aavartan {/* Changed */}
                 <span className="block bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
                   2026
                 </span>
@@ -54,7 +54,7 @@ function HeroSection() {
               Join India's premier national-level coding competition. Showcase
               your skills in AI, ML, and emerging technologies. Compete with the
               best minds, solve real-world problems, and win exciting prizes
-              worth <span className="font-bold text-orange-600">₹1,20,000</span>
+              worth <span className="font-bold text-orange-600">₹1,60,000</span>
               .
             </p>
             {/* Stats */}
@@ -64,15 +64,15 @@ function HeroSection() {
                 <div className="text-sm font-medium text-gray-600">Rounds</div>
               </div>
               <div className="space-y-1">
-                <div className="text-4xl font-black text-orange-600">₹1.2L</div>
+                <div className="text-4xl font-black text-orange-600">₹1.6L</div>
                 <div className="text-sm font-medium text-gray-600">
                   Prize Pool
                 </div>
               </div>
               <div className="space-y-1">
-                <div className="text-4xl font-black text-orange-600">500+</div>
+                <div className="text-4xl font-black text-orange-600">AI/ML</div>
                 <div className="text-sm font-medium text-gray-600">
-                  Participants
+                  Event Focus
                 </div>
               </div>
             </div>
@@ -160,8 +160,9 @@ function HeroSection() {
                       {/* Hover State */}
                       <div className="sphere-hover-content absolute inset-0 flex scale-50 flex-col items-center justify-center p-4 text-center opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100">
                         <div className="mb-1 text-lg font-black text-white drop-shadow-lg">
-                          Hackathon
-                        </div>
+                          Aavartan 2026
+                        </div>{" "}
+                        {/* Changed */}
                         <div className="mb-2 text-xs font-semibold text-white/90 drop-shadow">
                           NIT Silchar
                         </div>
@@ -328,7 +329,7 @@ function HeroSection() {
                     <div className="planet-wrapper absolute top-1/2 -left-6 -translate-y-1/2">
                       <div className="group/sphere flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-orange-300 to-red-400 shadow-xl transition-all duration-500 hover:scale-125 hover:shadow-orange-400/60">
                         <span className="text-xs font-bold text-white">
-                          ₹1.2L
+                          Idea
                         </span>
                       </div>
                       <div className="absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-400 opacity-50 blur-sm"></div>
@@ -343,10 +344,24 @@ function HeroSection() {
                     <div className="planet-wrapper absolute top-1/2 -right-6 -translate-y-1/2">
                       <div className="group/sphere flex h-20 w-20 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-red-400 to-pink-500 shadow-xl transition-all duration-500 hover:scale-125 hover:shadow-pink-400/60">
                         <span className="text-sm font-bold text-white">
-                          500+
+                          NITS
                         </span>
                       </div>
                       <div className="absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-400 opacity-50 blur-sm"></div>
+                    </div>
+                  </div>
+                    {/* ORBIT 5 - Participants Sphere */}
+                  <div
+                    className="orbit-5 absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2"
+                    style={{ animation: "orbit 35s linear infinite reverse" }}
+                  >
+                    <div className="planet-wrapper absolute top-1/3 -right-5 -translate-y-1/4">
+                      <div className="group/sphere flex h-15 w-15 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-red-400 to-pink-500 shadow-xl transition-all duration-500 hover:scale-125 hover:shadow-pink-400/60">
+                        <span className="text-sm font-bold text-white">
+                          Jan '26
+                        </span>
+                      </div>
+                      <div className="absolute top-1/4 left-1/4 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-600 opacity-50 blur-sm"></div>
                     </div>
                   </div>
 
