@@ -2,10 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import LoginPopup from "./Login";
+import { useAuth } from "~/hooks/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const { user, loading } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -63,10 +67,20 @@ export default function Navbar() {
             ))}
           </div>
           <button
-            onClick={() => setIsLoginOpen(true)}
-            className="ml-2 inline-flex transform items-center gap-2 rounded-md bg-gradient-to-r from-orange-500 to-red-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-[1.03] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 active:translate-y-0.5"
+            onClick={() => {
+              if(user) {
+                router.push("/dashboard")
+              }
+              else{
+                setIsLoginOpen(true)
+              }
+            }}
+            disabled={loading}
+            className={`${loading? "opacity-50 cursor-not-allowed":""} ml-2 cursor-pointer inline-flex transform items-center gap-2 rounded-md bg-gradient-to-r from-orange-500 to-red-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-[1.03] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 active:translate-y-0.5`}
           >
-            Login
+            {loading ? (
+              <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mx-6"></div>
+            ) : user ? "Dashboard" : "Login"}
           </button>
         </div>
       </div>

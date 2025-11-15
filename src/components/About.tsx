@@ -37,7 +37,7 @@ export default function AboutPage() {
   return (
     <div
       id="about"
-      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
+      className="pt-8 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
     >
       {/* Animated Background Elements */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">

@@ -1,12 +1,39 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Calendar, Clock, Trophy, Code, Users, Award } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Trophy,
+  Code,
+  Users,
+  Award,
+  X,
+  FileText,
+} from "lucide-react";
 import { type Event, type EventStatus } from "~/types/event";
 import { events } from "~/constants/events";
+import {
+  problemStatements,
+  problemStatementReleaseDate,
+} from "~/constants/problemStatements";
 
 const HackathonTimeline: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
+  const [isProblemStatementPopupOpen, setIsProblemStatementPopupOpen] =
+    useState(false);
+  const areProblemStatementsLive = currentDate >= problemStatementReleaseDate;
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -167,7 +194,111 @@ const HackathonTimeline: React.FC = () => {
                           {event.title}
                         </h2>
                       </div>
-                      <StatusBadge status={status} />
+                      <div className="flex gap-4">
+                        <button
+                          onClick={() => setIsProblemStatementPopupOpen(true)}
+                          className={`${event.id == 2 ? "" : "hidden"} cursor-pointer rounded-full bg-green-100 px-3 py-1.5 text-sm font-semibold text-green-700 transition-all duration-200 hover:scale-105 hover:shadow-md`}
+                        >
+                          Problem Statements
+                        </button>
+                        <StatusBadge status={status} />
+                      </div>
+                      {/*problemStatementpopup*/}
+                      {isProblemStatementPopupOpen && (
+                        <div className="fixed inset-0 z-500 flex items-center justify-center bg-black/10 p-4 backdrop-blur-sm">
+                          <div className="max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+                            {/* Header */}
+                            <div className="flex items-center justify-between bg-gradient-to-r from-blue-700 to-blue-500 p-6 text-white">
+                              <h2 className="text-2xl font-bold">
+                                Problem Statements
+                              </h2>
+                              <button
+                                onClick={() =>
+                                  setIsProblemStatementPopupOpen(false)
+                                }
+                                className="hover:bg-opacity-20 rounded-full transition-all cursor-pointer hover:scale-120"
+                              >
+                                <X size={24} />
+                              </button>
+                            </div>
+
+                            {/* Content */}
+                            <div className="max-h-[calc(90vh-160px)] overflow-y-auto p-6">
+                              {!areProblemStatementsLive ? (
+                                // Before target date - Show countdown/waiting message
+                                <div className="py-12 text-center">
+                                  <div className="mb-4 inline-block rounded-full bg-yellow-100 p-4">
+                                    <Clock
+                                      size={48}
+                                      className="text-yellow-600"
+                                    />
+                                  </div>
+                                  <h3 className="mb-3 text-2xl font-bold text-gray-800">
+                                    Coming Soon!
+                                  </h3>
+                                  <p className="mb-2 text-lg text-gray-600">
+                                    Problem statements will be live on
+                                  </p>
+                                  <p className="text-xl font-semibold text-blue-700">
+                                    {formatDate(problemStatementReleaseDate)}
+                                  </p>
+                                  <div className="mt-8 rounded-lg bg-gray-50 p-4">
+                                    <p className="text-sm text-gray-500">
+                                      Check back at the scheduled time to view
+                                      all problem statements
+                                    </p>
+                                  </div>
+                                </div>
+                              ) : (
+                                // After target date - Show problem statements
+                                <div>
+                                  <div className="mb-6 flex items-center gap-2 text-blue-700">
+                                    <FileText size={24} />
+                                    <p className="text-sm font-medium">
+                                      Now Live!
+                                    </p>
+                                  </div>
+
+                                  <div className="space-y-6">
+                                    {problemStatements.map((problem) => (
+                                      <div
+                                        key={problem.id}
+                                        className="rounded-lg border border-gray-200 p-5 transition-shadow hover:shadow-md"
+                                      >
+                                        <h3 className="mb-2 text-xl font-bold text-gray-800">
+                                          {problem.title}
+                                        </h3>
+                                        <p className="leading-relaxed text-gray-600">
+                                          {problem.description}
+                                        </p>
+                                      </div>
+                                    ))}
+                                  </div>
+
+                                  <div className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                                    <p className="text-sm text-blue-800">
+                                      <strong>Note:</strong> Choose one problem
+                                      statement to work on for your submission.
+                                    </p>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Footer */}
+                            <div className="border-t border-gray-200 bg-gray-50 px-6 py-4 ">
+                              <button
+                                onClick={() =>
+                                  setIsProblemStatementPopupOpen(false)
+                                }
+                                className="w-full cursor-pointer rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 py-3 font-semibold text-white transition-colors hover:bg-green-700"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <p className="mb-3 leading-relaxed text-gray-700">

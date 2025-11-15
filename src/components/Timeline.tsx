@@ -329,7 +329,7 @@ export default function TimelineDemo() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-18" id="timeline">
       <div className="mx-auto w-full max-w-7xl px-6">
         {/* Header Section */}
         <div className="mb-16 text-center">
