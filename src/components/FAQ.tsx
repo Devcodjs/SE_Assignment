@@ -11,7 +11,7 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: "What is Hackathon 2026?",
+      question: "What is Aavartan 2026?",
       answer: "A National-Level Coding Competition organized by NIT Silchar, focusing on AI, ML, and emerging technologies. Students compete through three rounds to solve real-world problems and win prizes up to ₹50,000."
     },
     {
@@ -46,7 +46,7 @@ const FAQ: React.FC = () => {
 
   const ChevronIcon = ({ isOpen }: { isOpen: boolean }) => (
     <svg
-      className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+      className={`w-4 h-4 transition-transform duration-600 ${isOpen ? "rotate-180" : ""}`}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -64,7 +64,7 @@ const FAQ: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-sm text-gray-600">
-            Quick answers to common questions about Hackathon 2026
+            Quick answers to common questions about Aavartan 2026
           </p>
         </div>
 
@@ -77,7 +77,7 @@ const FAQ: React.FC = () => {
               <div key={index}>
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center gap-4 hover:bg-gray-50 transition-colors duration-150"
+                  className="w-full px-6 py-4 text-left flex justify-between items-center gap-4 hover:bg-gray-50 transition-colors duration-350"
                 >
                   <span className="text-sm font-semibold text-gray-900 flex-1 pr-4">
                     {faq.question}
@@ -89,7 +89,7 @@ const FAQ: React.FC = () => {
 
                 {/* Answer */}
                 <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  className={`overflow-hidden transition-all duration-600 ease-in-out ${
                     isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
