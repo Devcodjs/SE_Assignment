@@ -103,7 +103,7 @@ export default function CodingQuestion({
 
       {/* Right Half - IDE */}
       <div className="flex w-1/2 p-6">
-        <CodingIDE questionNumber={0} />
+        <CodingIDE questionNumber={questionNumber-2} />
       </div>
     </div>
   );

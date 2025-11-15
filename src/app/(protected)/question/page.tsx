@@ -9,6 +9,7 @@ import type { Question } from "~/types/Question"; // Fixed path
 import { useRouter } from "next/navigation"; // Import useRouter
 
 // This is the local question array from your previous file
+// This is the local question array from your previous file
 const questions: Question[] = [
   {
     id: 1,
@@ -26,8 +27,64 @@ const questions: Question[] = [
   {
     id: 3,
     type: "coding",
-    question: "Write a program to calculate factorial of n.",
+    question: "Write a program to calculate sum of 2 numbers",
   },
+  // Added questions start here
+  {
+    "id": 4,
+    "type": "coding",
+    "question": "Write a program that reads a single string from the input and prints the exact same string to the output."
+  },
+  {
+    "id": 5,
+    "type": "coding",
+    "question": "Write a program that reads two space-separated integers from the input and prints the larger of the two."
+  },
+  {
+    "id": 6,
+    "type": "coding",
+    "question": "Write a program that reads a single integer from the input and prints 'Even' if the number is even, and 'Odd' if the number is odd."
+  },
+  {
+    "id": 7,
+    "type": "coding",
+    "question": "Write a program that reads a single string from the input and prints the string in reverse order."
+  },
+  {
+    "id": 8,
+    "type": "coding",
+    "question": "Write a program that reads a single non-negative integer 'n' from the input and prints its factorial (n!). The factorial of 0 is 1."
+  },
+  {
+    "id": 9,
+    "type": "coding",
+    "question": "Write a program that reads a line of space-separated integers from the input and prints their sum."
+  },
+  {
+    "id": 10,
+    "type": "coding",
+    "question": "Write a program that reads a single string from the input and prints 'Yes' if the string is a palindrome, and 'No' otherwise. A palindrome is a string that reads the same forwards and backwards."
+  },
+  {
+    "id": 11,
+    "type": "coding",
+    "question": "Write a program that reads two positive integers from the input (space-separated) and prints their Greatest Common Divisor (GCD)."
+  },
+  {
+    "id": 12,
+    "type": "coding",
+    "question": "Write a program that reads two space-separated strings from the input and prints them as a single string (concatenated) without the space."
+  },
+  {
+    "id": 13,
+    "type": "coding",
+    "question": "Write a program that reads a single string from the input and prints the total number of vowels (a, e, i, o, u) it contains. The check should be case-insensitive (count both 'a' and 'A')."
+  },
+  {
+    "id": 14,
+    "type": "coding",
+    "question": "Write a program that reads a single positive integer 'n' from the input and prints the nth Fibonacci number. Assume the sequence starts F(1) = 1, F(2) = 1, and F(n) = F(n-1) + F(n-2) for n > 2."
+  }
 ];
 
 export default function QuizPage() {
