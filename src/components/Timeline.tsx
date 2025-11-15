@@ -66,7 +66,7 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
   }, [data]);
 
   return (
-    <div id="timeline" ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative">
       {/* Vertical Line Container - Fixed position */}
       <div
         ref={ref}
@@ -85,7 +85,7 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
       </div>
 
       {/* Timeline Items */}
-      <div className="relative space-y-8">
+      <div className="relative space-y-12">
         {data.map((item, index) => (
           <div key={index} className="group flex items-start gap-8">
             {/* Left Column: Date & Marker */}
@@ -126,7 +126,7 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
             </div>
 
             {/* Right Column: Premium Content Card */}
-            <div className="flex-1 pb-8">
+            <div className="flex-1 ">
               <div className="transform overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
                 {/* Card Header with Gradient Accent */}
                 <div className="h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
@@ -351,7 +351,7 @@ export default function TimelineDemo() {
           </div>
 
           {/* Info Panel - Right Side */}
-          <div className="sticky top-8 w-80 flex-shrink-0">
+          <div className="sticky top-18 w-80 flex-shrink-0">
             <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
               {/* Free Badge */}
               <div className="p-6 pb-4">

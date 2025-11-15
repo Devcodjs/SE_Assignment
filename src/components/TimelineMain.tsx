@@ -10,6 +10,7 @@ import {
   Award,
   X,
   FileText,
+  ArrowLeft,
 } from "lucide-react";
 import { type Event, type EventStatus } from "~/types/event";
 import { events } from "~/constants/events";
@@ -17,13 +18,14 @@ import {
   problemStatements,
   problemStatementReleaseDate,
 } from "~/constants/problemStatements";
+import { useRouter } from "next/navigation";
 
 const HackathonTimeline: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [isProblemStatementPopupOpen, setIsProblemStatementPopupOpen] =
     useState(false);
   const areProblemStatementsLive = currentDate >= problemStatementReleaseDate;
-
+  const router = useRouter();
   const formatDate = (date: Date) => {
     return date.toLocaleString("en-US", {
       year: "numeric",
@@ -65,10 +67,19 @@ const HackathonTimeline: React.FC = () => {
 
   interface StatusBadgeProps {
     status: EventStatus;
+    eventId?: number;
   }
 
-  const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
-    if (status === "live") {
+  const StatusBadge: React.FC<StatusBadgeProps> = ({ status,eventId }) => {
+    if (status === "live" && eventId === 2) {
+      return (
+        <a href="https://forms.gle/VaWdpitZBBes1YG1A" target="_blank" className="hover:scale-105 transition-all duration-200 hover:shadow-md flex items-center gap-2 rounded-full bg-red-100 px-3 py-1.5 text-sm font-semibold text-red-700">
+          <span className="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
+          SUBMIT
+        </a>
+      );
+    }
+    else if (status === "live") {
       return (
         <div className="flex items-center gap-2 rounded-full bg-red-100 px-3 py-1.5 text-sm font-semibold text-red-700">
           <span className="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
@@ -92,6 +103,9 @@ const HackathonTimeline: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
+      <div className="mb-4">
+        <button onClick={() => router.push("/")} className="flex bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-2 rounded-xl cursor-pointer hover:scale-105 transition-all duration-200"><ArrowLeft className="mr-2"/>Back to home</button>
+      </div>
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
           <h1 className="mb-2 text-4xl font-bold text-gray-900">
@@ -201,7 +215,7 @@ const HackathonTimeline: React.FC = () => {
                         >
                           Problem Statements
                         </button>
-                        <StatusBadge status={status} />
+                        <StatusBadge status={status} eventId={event.id} />
                       </div>
                       {/*problemStatementpopup*/}
                       {isProblemStatementPopupOpen && (
