@@ -19,6 +19,7 @@ import {
   problemStatementReleaseDate,
 } from "~/constants/problemStatements";
 import { useRouter } from "next/navigation";
+import { useTeamData } from "~/hooks/TeamContext";
 
 const HackathonTimeline: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -26,6 +27,7 @@ const HackathonTimeline: React.FC = () => {
     useState(false);
   const areProblemStatementsLive = currentDate >= problemStatementReleaseDate;
   const router = useRouter();
+  const {currentTeam} = useTeamData();
   const formatDate = (date: Date) => {
     return date.toLocaleString("en-US", {
       year: "numeric",
@@ -70,16 +72,24 @@ const HackathonTimeline: React.FC = () => {
     eventId?: number;
   }
 
-  const StatusBadge: React.FC<StatusBadgeProps> = ({ status,eventId }) => {
+  const StatusBadge: React.FC<StatusBadgeProps> = ({ status, eventId }) => {
     if (status === "live" && eventId === 2) {
+      if(!currentTeam || currentTeam.round2 !== "eligible") return (
+        <div className="rounded-full bg-gray-200 px-3 py-1.5 text-sm font-semibold text-gray-700">
+          Not Eligible
+        </div>
+      );
       return (
-        <a href="https://forms.gle/VaWdpitZBBes1YG1A" target="_blank" className="hover:scale-105 transition-all duration-200 hover:shadow-md flex items-center gap-2 rounded-full bg-red-100 px-3 py-1.5 text-sm font-semibold text-red-700">
+        <a
+          href="https://forms.gle/VaWdpitZBBes1YG1A"
+          target="_blank"
+          className="flex items-center gap-2 rounded-full bg-red-100 px-3 py-1.5 text-sm font-semibold text-red-700 transition-all duration-200 hover:scale-105 hover:shadow-md"
+        >
           <span className="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
           SUBMIT
         </a>
       );
-    }
-    else if (status === "live") {
+    } else if (status === "live") {
       return (
         <div className="flex items-center gap-2 rounded-full bg-red-100 px-3 py-1.5 text-sm font-semibold text-red-700">
           <span className="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
@@ -104,7 +114,13 @@ const HackathonTimeline: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
       <div className="mb-4">
-        <button onClick={() => router.push("/")} className="flex bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-2 rounded-xl cursor-pointer hover:scale-105 transition-all duration-200"><ArrowLeft className="mr-2"/>Back to home</button>
+        <button
+          onClick={() => router.push("/")}
+          className="flex cursor-pointer rounded-xl bg-gradient-to-r from-blue-700 to-blue-500 px-4 py-2 text-white transition-all duration-200 hover:scale-105"
+        >
+          <ArrowLeft className="mr-2" />
+          Back to home
+        </button>
       </div>
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
@@ -211,7 +227,7 @@ const HackathonTimeline: React.FC = () => {
                       <div className="flex gap-4">
                         <button
                           onClick={() => setIsProblemStatementPopupOpen(true)}
-                          className={`${event.id == 2 ? "" : "hidden"} cursor-pointer rounded-full bg-green-100 px-3 py-1.5 text-sm font-semibold text-green-700 transition-all duration-200 hover:scale-105 hover:shadow-md`}
+                          className={`${event.id == 2 ? "" : "hidden"} cursor-pointer rounded-full bg-red-100 px-3 py-1.5 text-sm font-semibold text-red-700 transition-all duration-200 hover:scale-105 hover:shadow-md`}
                         >
                           Problem Statements
                         </button>
@@ -228,7 +244,7 @@ const HackathonTimeline: React.FC = () => {
                                 onClick={() =>
                                   setIsProblemStatementPopupOpen(false)
                                 }
-                                className="hover:bg-opacity-20 rounded-full transition-all cursor-pointer hover:scale-120"
+                                className="hover:bg-opacity-20 cursor-pointer rounded-full transition-all hover:scale-120"
                               >
                                 <X size={24} />
                               </button>
@@ -294,12 +310,12 @@ const HackathonTimeline: React.FC = () => {
                               )}
                             </div>
 
-                            <div className="border-t border-gray-200 bg-gray-50 px-6 py-4 ">
+                            <div className="border-t border-gray-200 bg-gray-50 px-6 py-4">
                               <button
                                 onClick={() =>
                                   setIsProblemStatementPopupOpen(false)
                                 }
-                                className="w-full cursor-pointer rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 py-3 font-semibold text-white transition-colors hover:bg-green-700"
+                                className="w-full cursor-pointer rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 py-3 font-semibold text-white transition-colors hover:bg-red-700"
                               >
                                 Close
                               </button>
@@ -317,17 +333,33 @@ const HackathonTimeline: React.FC = () => {
                       Note: {event.note}
                     </div>
 
-                    <div className="flex items-center gap-6 text-sm text-gray-600">
+                    <div className="flex items-center justify-between gap-6 text-sm text-gray-600">
                       <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        <span className="font-medium">Start:</span>
-                        <span>{formatTime(event.startTime)}</span>
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4" />
+                          <span className="font-medium">Start:</span>
+                          <span>{formatTime(event.startTime)}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="h-4 w-4" />
+                          <span className="font-medium">End:</span>
+                          <span>{formatTime(event.endTime)}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        <span className="font-medium">End:</span>
-                        <span>{formatTime(event.endTime)}</span>
-                      </div>
+                      {index === 0 && status==='live' && currentTeam?.round1==="eligible" && (
+                        <button 
+                        onClick={()=>router.push('/question')}
+                        className="cursor-pointer rounded-lg bg-red-500 px-6 py-3 text-lg font-bold text-white shadow-lg transition-all duration-150 ease-in-out select-none hover:bg-red-600 focus:outline-none">
+                          Start Now
+                        </button>
+                      )}
+                      {/* {index === 1 && status==='live' && currentTeam?.round2==="eligible" && (
+                        <button 
+                        onClick={()=>router.push('/question')}
+                        className="cursor-pointer rounded-lg bg-red-500 px-6 py-3 text-lg font-bold text-white shadow-lg transition-all duration-150 ease-in-out select-none hover:bg-red-600 focus:outline-none">
+                          Submit
+                        </button>
+                      )} */}
                     </div>
                   </div>
                 </div>
@@ -361,10 +393,10 @@ const HackathonTimeline: React.FC = () => {
           </div>
           <div className="rounded-xl bg-white p-6 shadow-md">
             <div className="mb-2 flex items-center gap-3">
-              <Trophy className="h-6 w-6 text-green-600" />
+              <Trophy className="h-6 w-6 text-red-600" />
               <h3 className="font-semibold text-gray-900">Completed</h3>
             </div>
-            <p className="text-3xl font-bold text-green-600">
+            <p className="text-3xl font-bold text-red-600">
               {
                 events.filter(
                   (e) => getEventStatus(e.startTime, e.endTime) === "completed",
