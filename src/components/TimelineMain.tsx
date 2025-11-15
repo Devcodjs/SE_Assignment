@@ -2,88 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import { Calendar, Clock, Trophy, Code, Users, Award } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-type EventStatus = "live" | "upcoming" | "completed";
-
-interface Event {
-  id: number;
-  date: number;
-  month: string;
-  year: number;
-  title: string;
-  description: string;
-  note: string;
-  startTime: Date;
-  endTime: Date;
-  icon: LucideIcon;
-}
+import { type Event, type EventStatus } from "~/types/event";
+import { events } from "~/constants/events";
 
 const HackathonTimeline: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
-  // Update current time every minute
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentDate(new Date());
     }, 60000);
     return () => clearInterval(timer);
   }, []);
-
-  const events: Event[] = [
-    {
-      id: 1,
-      date: 12,
-      month: "Nov",
-      year: 2024,
-      title: "MCQ Challenge",
-      description:
-        "Candidates will have to crack 25 questions based on topics like Data Structures, Algorithms, Object Oriented Programming, and Design, along with other Computer Science fundamentals in a stipulated time period. The test can only be accessed via Desktop/Laptop.",
-      note: "This is an Eliminator Round.",
-      startTime: new Date("2025-11-12T12:00:00"),
-      endTime: new Date("2025-11-12T20:00:00"),
-      icon: Code,
-    },
-    {
-      id: 2,
-      date: 18,
-      month: "Nov",
-      year: 2024,
-      title: "Coding Challenge - I",
-      description:
-        "Participants will have to present logical coding solutions (in any language of their choice) to 2 problem statements at hand in 90 minutes. The assessment can only be accessed via Desktop/Laptop.",
-      note: "This is an Eliminator Round.",
-      startTime: new Date("2025-11-18T14:00:00"),
-      endTime: new Date("2025-11-18T20:00:00"),
-      icon: Code,
-    },
-    {
-      id: 3,
-      date: 24,
-      month: "Nov",
-      year: 2024,
-      title: "Coding Challenge - II",
-      description:
-        "Shortlisted candidates from the coding round will have to undergo the second round of coding. Logical coding solutions (in any language of their choice) to 2 problem statements will have to be solved in 90 minutes. The assessment can only be accessed via Desktop/Laptop.",
-      note: "The cumulative score of the MCQ and previous coding round will be considered.",
-      startTime: new Date("2025-11-24T14:00:00"),
-      endTime: new Date("2025-11-24T20:00:00"),
-      icon: Users,
-    },
-    {
-      id: 4,
-      date: 30,
-      month: "Nov",
-      year: 2024,
-      title: "Final Presentation",
-      description:
-        "Top teams will present their solutions to a panel of judges. Teams must demonstrate their working prototype and explain their technical approach and business impact.",
-      note: "This is the Final Round.",
-      startTime: new Date("2025-11-30T10:00:00"),
-      endTime: new Date("2025-11-30T18:00:00"),
-      icon: Trophy,
-    },
-  ];
 
   const getEventStatus = (startTime: Date, endTime: Date): EventStatus => {
     if (currentDate >= startTime && currentDate <= endTime) {
@@ -136,7 +66,6 @@ const HackathonTimeline: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
       <div className="mx-auto max-w-6xl">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="mb-2 text-4xl font-bold text-gray-900">
             Stages & Timeline
@@ -145,33 +74,7 @@ const HackathonTimeline: React.FC = () => {
             Track your progress through the hackathon stages
           </p>
         </div>
-
-        {/* Navigation Tabs */}
-        <div className="mb-8 flex gap-4 overflow-x-auto pb-2">
-          {[
-            "Stages & Timeline",
-            "Details",
-            "Dates & Deadlines",
-            "Prizes",
-            "Reviews",
-            "FAQs & Discussions",
-          ].map((tab, idx) => (
-            <button
-              key={idx}
-              className={`rounded-full px-6 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
-                idx === 0
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Timeline */}
         <div className="relative">
-          {/* Events */}
           <div className="space-y-8">
             {events.map((event, index) => {
               const status = getEventStatus(event.startTime, event.endTime);
@@ -180,9 +83,7 @@ const HackathonTimeline: React.FC = () => {
 
               return (
                 <div key={event.id} className="relative flex gap-6">
-                  {/* Date Badge with Timeline */}
                   <div className="relative z-10 flex shrink-0 flex-col items-center">
-                    {/* Date Badge */}
                     <div
                       className={`flex h-16 w-16 transform flex-col items-center justify-center rounded-2xl transition-all duration-300 hover:scale-110 ${
                         status === "live"
@@ -196,10 +97,8 @@ const HackathonTimeline: React.FC = () => {
                       <div className="text-xs font-medium">{event.month}</div>
                     </div>
 
-                    {/* Connector line and dot */}
                     {!isLast && (
                       <div className="mt-4 flex flex-col items-center">
-                        {/* Animated dot */}
                         <div
                           className={`h-4 w-4 rounded-full transition-all duration-300 ${
                             status === "live"
@@ -208,12 +107,9 @@ const HackathonTimeline: React.FC = () => {
                           }`}
                         ></div>
 
-                        {/* Decorative connecting line */}
                         <div className="relative h-28 w-1">
-                          {/* Background line with fade */}
                           <div className="absolute inset-0 rounded-full bg-gradient-to-b from-gray-300 via-gray-200 to-gray-100 opacity-50"></div>
 
-                          {/* Animated progress line */}
                           <div
                             className={`absolute inset-0 rounded-full transition-all duration-1000 ${
                               status === "completed"
@@ -224,7 +120,6 @@ const HackathonTimeline: React.FC = () => {
                             }`}
                           ></div>
 
-                          {/* Glowing effect for live events */}
                           {status === "live" && (
                             <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-b from-red-300 to-transparent blur-sm"></div>
                           )}
@@ -233,14 +128,13 @@ const HackathonTimeline: React.FC = () => {
                           className={`h-4 w-4 rounded-full transition-all duration-300 ${
                             status === "live"
                               ? "animate-pulse bg-red-500 shadow-lg ring-4 shadow-red-300 ring-red-200"
-                              : " shadow-lg ring-4 shadow-blue-300 ring-blue-200"
+                              : "shadow-lg ring-4 shadow-blue-300 ring-blue-200"
                           }`}
                         ></div>
                       </div>
                     )}
                   </div>
 
-                  {/* Event Card */}
                   <div
                     className={`flex-1 rounded-2xl p-6 transition-all ${
                       status === "live"
@@ -303,7 +197,6 @@ const HackathonTimeline: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer Stats */}
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="rounded-xl bg-white p-6 shadow-md">
             <div className="mb-2 flex items-center gap-3">
