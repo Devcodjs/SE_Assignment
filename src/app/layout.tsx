@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Toaster } from "~/components/ui/sonner";
 import { AuthProvider } from "~/hooks/AuthContext";
+import { TeamProvider } from "~/hooks/TeamContext";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -24,7 +25,9 @@ export default function RootLayout({
       <body>
         <Toaster />
         <AuthProvider>
-          <main>{children}</main>
+          <TeamProvider>
+            <main>{children}</main>
+          </TeamProvider>
         </AuthProvider>
       </body>
     </html>
