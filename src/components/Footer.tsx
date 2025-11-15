@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-200 py-12 mt-16">
+    <footer className="bg-gray-900 text-gray-200 py-12">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
