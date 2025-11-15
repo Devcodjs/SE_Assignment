@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { registerationGFormLink } from "~/constants/constants";
 
-// Timeline item interface
 interface TimelineItem {
   day: string;
   monthYear: string;
@@ -34,22 +33,18 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
         const containerRect = containerRef.current.getBoundingClientRect();
         const lineRect = ref.current.getBoundingClientRect();
 
-        // Calculate the scroll progress
         const windowHeight = window.innerHeight;
         const containerTop = containerRect.top;
         const containerHeight = containerRect.height;
 
-        // Start animating when container enters viewport
         const scrollStart = windowHeight - containerTop;
         const scrollableHeight = containerHeight + windowHeight;
 
-        // Calculate percentage of scroll through the timeline
         const scrollProgress = Math.max(
           0,
           Math.min(1, scrollStart / scrollableHeight),
         );
 
-        // Set the height based on scroll progress
         const maxHeight = lineRect.height;
         setHeight(scrollProgress * maxHeight);
       }
@@ -57,7 +52,7 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -67,7 +62,6 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
 
   return (
     <div ref={containerRef} className="relative">
-      {/* Vertical Line Container - Fixed position */}
       <div
         ref={ref}
         className="absolute top-32 left-[3rem] w-[2px] bg-gray-200"
@@ -75,7 +69,6 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
           height: `calc(100% - 8rem)`,
         }}
       >
-        {/* Animated gradient line that grows with scroll */}
         <div
           className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-b from-purple-500 via-blue-500 to-indigo-500 transition-all duration-300 ease-out"
           style={{
@@ -84,13 +77,10 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
         />
       </div>
 
-      {/* Timeline Items */}
       <div className="relative space-y-12">
         {data.map((item, index) => (
           <div key={index} className="group flex items-start gap-8">
-            {/* Left Column: Date & Marker */}
             <div className="relative z-10 flex w-24 flex-shrink-0 flex-col items-center">
-              {/* Date Box with Gradient */}
               <div className="mb-3 w-full transform rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-4 text-center shadow-lg transition-transform group-hover:scale-105">
                 <div className="text-3xl font-bold text-white">{item.day}</div>
                 <div className="mt-1 text-xs font-semibold tracking-wider text-blue-100 uppercase">
@@ -98,7 +88,6 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
                 </div>
               </div>
 
-              {/* Timeline Marker with Pulse Effect */}
               <div className="relative">
                 {item.status === "live" ? (
                   <div className="relative">
@@ -125,14 +114,11 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
               </div>
             </div>
 
-            {/* Right Column: Premium Content Card */}
-            <div className="flex-1 ">
+            <div className="flex-1">
               <div className="transform overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
-                {/* Card Header with Gradient Accent */}
                 <div className="h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
 
                 <div className="p-8">
-                  {/* Title Section */}
                   <div className="mb-4 flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       {item.icon && (
@@ -152,7 +138,6 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
                       </div>
                     </div>
 
-                    {/* Enhanced Status Badge */}
                     {item.status === "upcoming" && (
                       <span className="rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-md">
                         UPCOMING
@@ -171,12 +156,10 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="mb-6 leading-relaxed text-gray-700">
                     {item.content}
                   </div>
 
-                  {/* Time Info with Icons */}
                   <div className="grid grid-cols-1 gap-4 border-t border-gray-100 pt-6 md:grid-cols-2">
                     <div className="flex items-start gap-3 rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 p-4">
                       <svg
@@ -246,7 +229,8 @@ export default function TimelineDemo() {
       content: (
         <p>
           Final day for all participating teams to register for Aavartan 2026.
-          Registration fee is <span className="font-bold text-purple-600">₹2,000</span> per team. 
+          Registration fee is{" "}
+          <span className="font-bold text-purple-600">₹2,000</span> per team.
           Early bird registrations get exclusive mentorship sessions!
         </p>
       ),
@@ -328,11 +312,13 @@ export default function TimelineDemo() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-18" id="timeline">
+    <div
+      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-18"
+      id="timeline"
+    >
       <div className="mx-auto w-full max-w-7xl px-6">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold mb-4 shadow-lg">
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-block rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-bold text-white shadow-lg">
             AAVARTAN 2026
           </div>
           <h1 className="mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-5xl font-bold text-transparent">
@@ -343,66 +329,13 @@ export default function TimelineDemo() {
           </p>
         </div>
 
-        {/* Main Content - Timeline + Info Panel */}
         <div className="flex items-start gap-8">
-          {/* Timeline - Left Side */}
           <div className="flex-1">
             <Timeline data={data} />
           </div>
 
-          {/* Info Panel - Right Side */}
           <div className="sticky top-18 w-80 flex-shrink-0">
             <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
-              {/* Free Badge */}
-              <div className="p-6 pb-4">
-                <div className="mb-6 flex items-center justify-between">
-                  <h2 className="text-3xl font-bold text-gray-900">Free</h2>
-                  <div className="flex gap-2">
-                    <button className="rounded-full p-2 transition hover:bg-gray-100">
-                      {""}
-                      <svg
-                        className="h-6 w-6 text-gray-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                        />
-                      </svg>
-                    </button>
-                    <button className="rounded-full p-2 transition hover:bg-gray-100">
-                      {""}
-                      <svg
-                        className="h-6 w-6 text-gray-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                {/* View Details Button */}
-                <a
-                  href={registerationGFormLink}
-                  className="mb-6 block w-full rounded-xl bg-gradient-to-r from-green-600 to-green-700 py-4 text-center font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
-                >
-                  Register
-                </a>
-              </div>
-
-              {/* Registration Details Section */}
               <div className="px-6 pb-6">
                 <div className="border-t border-gray-100 pt-6">
                   <h3 className="mb-6 text-xl font-bold text-gray-900">
@@ -410,7 +343,6 @@ export default function TimelineDemo() {
                   </h3>
 
                   <div className="space-y-5">
-                    {/* Team Size */}
                     <div className="flex items-start gap-4">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-purple-100">
                         <svg
@@ -437,7 +369,6 @@ export default function TimelineDemo() {
                       </div>
                     </div>
 
-                    {/* Registration Fee */}
                     <div className="flex items-start gap-4">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-green-100 to-emerald-100">
                         <svg
@@ -464,7 +395,6 @@ export default function TimelineDemo() {
                       </div>
                     </div>
 
-                    {/* Deadline */}
                     <div className="flex items-start gap-4">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-red-100 to-pink-100">
                         <svg
@@ -491,7 +421,6 @@ export default function TimelineDemo() {
                       </div>
                     </div>
 
-                    {/* Eligibility */}
                     <div className="flex items-start gap-4">
                       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-purple-100 to-indigo-100">
                         <svg
@@ -519,6 +448,14 @@ export default function TimelineDemo() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="p-4 pb-4">
+                <a
+                  href={registerationGFormLink}
+                  className="mb-6 block w-full rounded-xl bg-gradient-to-r from-green-600 to-green-700 py-4 text-center font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
+                >
+                  Register
+                </a>
               </div>
             </div>
           </div>
