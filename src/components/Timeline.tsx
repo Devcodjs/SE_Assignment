@@ -52,7 +52,7 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -114,7 +114,7 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
               </div>
             </div>
 
-            <div className="flex-1 ">
+            <div className="flex-1">
               <div className="transform overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
                 <div className="h-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
 
@@ -229,7 +229,8 @@ export default function TimelineDemo() {
       content: (
         <p>
           Final day for all participating teams to register for Aavartan 2026.
-          Registration fee is <span className="font-bold text-purple-600">₹2,000</span> per team. 
+          Registration fee is{" "}
+          <span className="font-bold text-purple-600">₹2,000</span> per team.
           Early bird registrations get exclusive mentorship sessions!
         </p>
       ),
@@ -311,10 +312,13 @@ export default function TimelineDemo() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-18" id="timeline">
+    <div
+      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-18"
+      id="timeline"
+    >
       <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold mb-4 shadow-lg">
+        <div className="mb-16 text-center">
+          <div className="mb-4 inline-block rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-bold text-white shadow-lg">
             AAVARTAN 2026
           </div>
           <h1 className="mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-5xl font-bold text-transparent">
@@ -332,53 +336,6 @@ export default function TimelineDemo() {
 
           <div className="sticky top-18 w-80 flex-shrink-0">
             <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl">
-              <div className="p-6 pb-4">
-                <div className="mb-6 flex items-center justify-between">
-                  <h2 className="text-3xl font-bold text-gray-900">Free</h2>
-                  <div className="flex gap-2">
-                    <button className="rounded-full p-2 transition hover:bg-gray-100">
-                      {""}
-                      <svg
-                        className="h-6 w-6 text-gray-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                        />
-                      </svg>
-                    </button>
-                    <button className="rounded-full p-2 transition hover:bg-gray-100">
-                      {""}
-                      <svg
-                        className="h-6 w-6 text-gray-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <a
-                  href={registerationGFormLink}
-                  className="mb-6 block w-full rounded-xl bg-gradient-to-r from-green-600 to-green-700 py-4 text-center font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
-                >
-                  Register
-                </a>
-              </div>
-
               <div className="px-6 pb-6">
                 <div className="border-t border-gray-100 pt-6">
                   <h3 className="mb-6 text-xl font-bold text-gray-900">
@@ -491,6 +448,14 @@ export default function TimelineDemo() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="p-4 pb-4">
+                <a
+                  href={registerationGFormLink}
+                  className="mb-6 block w-full rounded-xl bg-gradient-to-r from-green-600 to-green-700 py-4 text-center font-bold text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl"
+                >
+                  Register
+                </a>
               </div>
             </div>
           </div>
